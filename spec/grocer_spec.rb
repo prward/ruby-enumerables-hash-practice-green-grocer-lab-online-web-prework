@@ -250,7 +250,7 @@ describe "Grocer" do
         cheese = find_item('CHEESE')
         cart = Array.new(3, cheese)
         coupons = [find_coupon("CHEESE")]
-        expect(checkout(cart, coupons)).to eq(15.00)
+        expect(checkout(cart, coupons)).to eq({"CHEESE"=>{:clearance=>false, :count=>0, :price=>6.5}, "CHEESE W/COUPON"=>{:clearance=>false, :count=>1, :price=>15.0}})
       end
 
       it "considers coupons and clearance discounts" do
