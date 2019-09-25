@@ -122,7 +122,7 @@ describe "Grocer" do
         expect(multiple_coupons["CHEESE"][:price]).to eq(6.50)
         expect(multiple_coupons["AVOCADO"][:price]).to eq(3.00)
         expect(multiple_coupons["CHEESE W/COUPON"][:price]).to eq(15.00)
-        expect(multiple_coupons["CHEESE W/COUPON"][:count]).to eq(3)
+        expect(multiple_coupons["CHEESE W/COUPON"][:count]).to eq(1)
         expect(multiple_coupons["CHEESE W/COUPON"][:clearance]).to eq(false)
         expect(multiple_coupons["AVOCADO W/COUPON"][:price]).to eq(2.50)
         expect(multiple_coupons["AVOCADO W/COUPON"][:count]).to eq(2)
