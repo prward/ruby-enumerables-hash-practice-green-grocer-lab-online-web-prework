@@ -204,7 +204,7 @@ describe "Grocer" do
       expect(result[:count]).to eq(0)
     
     end
-  end
+  
 
   describe "#apply_clearance" do
     it "takes 20% off price if the item is on clearance" do
