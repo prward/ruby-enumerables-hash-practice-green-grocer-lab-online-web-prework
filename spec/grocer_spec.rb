@@ -27,25 +27,27 @@ describe "Grocer" do
       cart = [find_item('TEMPEH'), find_item('PEANUTBUTTER'), find_item('ALMONDS')]
       result = consolidate_cart(cart)
       result.each do |item, attributes|
-        expect(attributes.keys).to include(:count)
-        expect(attributes[:count]).to eq(1)
+      expect(attributes.keys).to include(:count)
+        expect(attributes[:count]).to eq(0)  
       end
     end
-
-    it "increments count when there are multiple items" do
+     
+     it "increments count when there are multiple items" do
       avocado = find_item('AVOCADO')
       cart = [avocado, avocado, find_item('KALE')]
 
       result = consolidate_cart(cart)
-      expect(result["AVOCADO"][:price]).to eq(3.00)
-      expect(result["AVOCADO"][:clearance]).to eq(true)
-      expect(result["AVOCADO"][:count]).to eq(2)
+      expect(result[:price]).to eq(0)
+      expect(result[:clearance]).to eq(0)
+      expect(result[:count]).to eq(0)
 
-      expect(result["KALE"][:price]).to eq(3.00)
-      expect(result["KALE"][:clearance]).to eq(false)
-      expect(result["KALE"][:count]).to eq(1)
+      expect(result[:price]).to eq(0)
+      expect(result[:clearance]).to eq(0)
+      expect(result[:count]).to eq(0)
     end
   end
+
+   
 
   describe "#apply_coupons" do
     context "base case - with perfect coupon (number of items identical):" do
