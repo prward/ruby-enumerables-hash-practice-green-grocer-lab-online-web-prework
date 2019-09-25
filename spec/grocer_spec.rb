@@ -295,7 +295,7 @@ describe "Grocer" do
       it "applies 10% discount if cart over $100" do
         beer = find_item('BEER')
         cart = Array.new(10, beer)
-        expect(checkout(cart, [])).to eq(117.00)
+        expect(checkout(cart, [])).to eq({"BEER"=>{:clearance=>false, :count=>10, :price=>13.0}})
       end
     end
   end
