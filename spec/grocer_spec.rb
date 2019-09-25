@@ -181,7 +181,7 @@ describe "Grocer" do
         result = consolidate_cart(cart)
 
         expect(self).to receive(:consolidate_cart).with(cart).and_return(result)
-        expect(checkout(cart, [])).to eq(2.50)
+        expect(checkout(cart, [])).to eq({"BEETS"=>{:clearance=>false, :count=>1, :price=>2.5}})
       end
 
       it "calls on #apply_coupons after calling on #consolidate_cart when there is only one item in the cart" do
