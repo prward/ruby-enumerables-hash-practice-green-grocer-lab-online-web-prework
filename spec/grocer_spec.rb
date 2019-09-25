@@ -380,5 +380,6 @@ describe "Grocer" do
         expect(checkout(cart, [])).to eq(117.00)
       end
     end
-  
-
+  end
+end
+end 
