@@ -264,7 +264,7 @@ describe "Grocer" do
         beer = find_item('BEER')
         cart = Array.new(3, beer)
         coupons = [find_coupon("BEER")]
-        expect(checkout(cart, coupons)).to eq(33.00)
+        expect(checkout(cart, coupons)).to eq({"BEER"=>{:clearance=>false, :count=>1, :price=>13.0}, "BEER W/COUPON"=>{:clearance=>false, :count=>1, :price=>20.0}})
       end
 
       it "only applies coupons that meet minimum amount" do
