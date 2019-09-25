@@ -257,7 +257,7 @@ describe "Grocer" do
         avocado = find_item('AVOCADO')
         cart = Array.new(2, avocado)
         coupons = [find_coupon("AVOCADO")]
-        expect(checkout(cart, coupons)).to eq(4.00)
+        expect(checkout(cart, coupons)).to eq({"AVOCADO"=>{:clearance=>true, :count=>0, :price=>2.4}, "AVOCADO W/COUPON"=>{:clearance=>true, :count=>1, :price=>4.0}})
       end
 
       it "charges full price for items that fall outside of coupon count" do
