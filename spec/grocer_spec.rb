@@ -281,7 +281,7 @@ describe "Grocer" do
       it "applies a 20% discount to items on clearance" do
         cart = [find_item('PEANUTBUTTER')]
         total_cost = checkout(cart, [])
-        expect(total_cost).to eq(2.40)
+        expect(total_cost).to eq({"PEANUTBUTTER"=>{:clearance=>true, :count=>1, :price=>2.4}})
       end
 
       it "applies a 20% discount to items on clearance but not to non-clearance items" do
