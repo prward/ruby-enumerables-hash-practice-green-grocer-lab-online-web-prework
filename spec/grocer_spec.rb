@@ -128,7 +128,7 @@ describe "Grocer" do
       expect(result[:clearance]).to eq(0)
       expect(result[:count]).to eq(0)
     end
-   end 
+    
 
     context "more advanced cases:" do
 
