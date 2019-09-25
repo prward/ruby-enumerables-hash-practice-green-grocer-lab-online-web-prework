@@ -207,7 +207,7 @@ describe "Grocer" do
         expect(self).to receive(:apply_coupons).with(consolidated, []).and_return(coupons_applied)
         expect(self).to receive(:apply_clearance).with(coupons_applied).and_return(clearance_applied)
 
-        expect(checkout(cart, [])).to eq(2.50)
+        expect(checkout(cart, [])).to eq({"BEETS"=>{:clearance=>false, :count=>1, :price=>2.5}})
       end
 
 
