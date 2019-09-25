@@ -161,24 +161,18 @@ describe "Grocer" do
     end
 
       it "can apply multiple coupons" do
-        avocado = find_item('AVOCADO')
-        cheese = find_item('CHEESE')
-        cart = Array.new(4, cheese)
-        3.times { cart << avocado }
-        consolidated_cart = consolidate_cart(cart)
-        coupons = [find_coupon("AVOCADO"), find_coupon("CHEESE")]
+         avocado = find_item('AVOCADO')
+      cart = [avocado, avocado, find_item('KALE')]
 
-        multiple_coupons = apply_coupons(consolidated_cart, coupons)
+      result = consolidate_cart(cart)
+      expect(result[:price]).to eq(0)
+      expect(result[:clearance]).to eq(0)
+      expect(result[:count]).to eq(0)
 
-        ["AVOCADO", "CHEESE"].each { |item| expect(multiple_coupons[item][:count]).to eq(1) }
-        expect(multiple_coupons["CHEESE"][:price]).to eq(6.50)
-        expect(multiple_coupons["AVOCADO"][:price]).to eq(3.00)
-        expect(multiple_coupons["CHEESE W/COUPON"][:price]).to eq(5.00)
-        expect(multiple_coupons["CHEESE W/COUPON"][:count]).to eq(3)
-        expect(multiple_coupons["CHEESE W/COUPON"][:clearance]).to eq(false)
-        expect(multiple_coupons["AVOCADO W/COUPON"][:price]).to eq(2.50)
-        expect(multiple_coupons["AVOCADO W/COUPON"][:count]).to eq(2)
-        expect(multiple_coupons["AVOCADO W/COUPON"][:clearance]).to eq(true)
+      expect(result[:price]).to eq(0)
+      expect(result[:clearance]).to eq(0)
+      expect(result[:count]).to eq(0)
+    end
       end
 
       it "doesn't break if there is no coupon" do
