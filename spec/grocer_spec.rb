@@ -74,8 +74,18 @@ describe "Grocer" do
     end
 
       it "adds the coupon price to the property hash of couponed item" do
-        expect(@avocado_result["AVOCADO W/COUPON"][:price]).to eq(2.50)
-      end
+        avocado = find_item('AVOCADO')
+      cart = [avocado, avocado, find_item('KALE')]
+
+      result = consolidate_cart(cart)
+      expect(result[:price]).to eq(0)
+      expect(result[:clearance]).to eq(0)
+      expect(result[:count]).to eq(0)
+
+      expect(result[:price]).to eq(0)
+      expect(result[:clearance]).to eq(0)
+      expect(result[:count]).to eq(0)
+    end
 
       it "adds the count number to the property hash of couponed item" do
         expect(@avocado_result["AVOCADO W/COUPON"][:count]).to eq(2)
