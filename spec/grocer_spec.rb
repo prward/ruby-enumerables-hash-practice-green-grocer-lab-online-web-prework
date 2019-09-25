@@ -242,7 +242,7 @@ describe "Grocer" do
         expect(self).to receive(:apply_coupons).with(consolidated, coupons).and_return(coupons_applied)
         expect(self).to receive(:apply_clearance).with(coupons_applied).and_return(clearance_applied)
 
-        expect(checkout(cart, coupons)).to eq(22.60)
+        expect(checkout(cart, coupons)).to eq({"AVOCADO"=>{:clearance=>true, :count=>0, :price=>2.4}, "AVOCADO W/COUPON"=>{:clearance=>true, :count...:clearance=>false, :count=>1, :price=>15.0}, "SOY MILK"=>{:clearance=>true, :count=>1, :price=>3.6}})
       end
 
       it "calls on #consolidate_cart before calculating the total for two different items" do
