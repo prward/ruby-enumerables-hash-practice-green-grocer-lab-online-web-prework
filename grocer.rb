@@ -5,7 +5,7 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  :ITEM_NAME_WITH_COUPON [ {"AVOCADO W/COUPON" => {:price => 2.50}}]
+  
   
   
 end
