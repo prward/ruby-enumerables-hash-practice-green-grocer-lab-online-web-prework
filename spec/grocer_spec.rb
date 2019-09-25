@@ -128,7 +128,7 @@ describe "Grocer" do
       expect(result[:clearance]).to eq(0)
       expect(result[:count]).to eq(0)
     end
-    end
+   end 
 
     context "more advanced cases:" do
 
@@ -173,7 +173,7 @@ describe "Grocer" do
       expect(result[:clearance]).to eq(0)
       expect(result[:count]).to eq(0)
     end
-      end
+      
 
       it "doesn't break if there is no coupon" do
          avocado = find_item('AVOCADO')
@@ -188,7 +188,7 @@ describe "Grocer" do
       expect(result[:clearance]).to eq(0)
       expect(result[:count]).to eq(0)
     end
-      end
+     
 
       it "can increment coupon count if two are applied" do
          avocado = find_item('AVOCADO')
