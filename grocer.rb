@@ -8,6 +8,7 @@ def consolidate_cart(cart)
       organized_cart[fruit][:count] += 1
     end
   end
+  return organized_cart
   
   
 end
