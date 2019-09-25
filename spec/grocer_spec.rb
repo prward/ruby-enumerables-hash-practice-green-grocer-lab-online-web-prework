@@ -240,7 +240,7 @@ describe "Grocer" do
         cart = Array.new(2, beets)
         result = consolidate_cart(cart)
         expect(self).to receive(:consolidate_cart).with(cart).and_return(result)
-        expect(checkout(cart, [])).to eq(5.00)
+        expect(checkout(cart, [])).to eq({"BEETS"=>{:clearance=>false, :count=>2, :price=>2.5}})
       end
     end
 
