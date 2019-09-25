@@ -116,9 +116,18 @@ describe "Grocer" do
     end
 
       it "remembers if the item was on clearance" do
-        expect(@avocado_result["AVOCADO W/COUPON"][:clearance]).to eq(true)
-      end
+        avocado = find_item('AVOCADO')
+      cart = [avocado, avocado, find_item('KALE')]
 
+      result = consolidate_cart(cart)
+      expect(result[:price]).to eq(0)
+      expect(result[:clearance]).to eq(0)
+      expect(result[:count]).to eq(0)
+
+      expect(result[:price]).to eq(0)
+      expect(result[:clearance]).to eq(0)
+      expect(result[:count]).to eq(0)
+    end
     end
 
     context "more advanced cases:" do
