@@ -1,5 +1,5 @@
 def consolidate_cart(cart)
- cart.each_with_object(Hash.new(0)) { |cart,counts| counts = 1 }
+ 
   
   
 end
