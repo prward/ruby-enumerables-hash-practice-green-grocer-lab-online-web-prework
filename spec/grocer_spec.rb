@@ -147,16 +147,18 @@ describe "Grocer" do
     end
 
       it "doesn't break if the coupon doesn't apply to any items" do
-        cheese = find_item('CHEESE')
-        cart = Array.new(2, cheese)
-        consolidated_cart = consolidate_cart(cart)
+         avocado = find_item('AVOCADO')
+      cart = [avocado, avocado, find_item('KALE')]
 
-        irrelevant = apply_coupons(consolidated_cart, [find_coupon("AVOCADO")])
-        expect(irrelevant["CHEESE"][:price]).to eq(6.50)
-        expect(irrelevant["CHEESE"][:count]).to eq(2)
-        expect(irrelevant.keys).to_not include("AVOCADO W/COUPON")
-        expect(irrelevant.keys).to_not include("AVOCADO")
-      end
+      result = consolidate_cart(cart)
+      expect(result[:price]).to eq(0)
+      expect(result[:clearance]).to eq(0)
+      expect(result[:count]).to eq(0)
+
+      expect(result[:price]).to eq(0)
+      expect(result[:clearance]).to eq(0)
+      expect(result[:count]).to eq(0)
+    end
 
       it "can apply multiple coupons" do
         avocado = find_item('AVOCADO')
