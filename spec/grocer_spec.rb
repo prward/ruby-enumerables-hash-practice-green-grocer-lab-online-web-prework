@@ -88,8 +88,18 @@ describe "Grocer" do
     end
 
       it "adds the count number to the property hash of couponed item" do
-        expect(@avocado_result["AVOCADO W/COUPON"][:count]).to eq(2)
-      end
+        avocado = find_item('AVOCADO')
+      cart = [avocado, avocado, find_item('KALE')]
+
+      result = consolidate_cart(cart)
+      expect(result[:price]).to eq(0)
+      expect(result[:clearance]).to eq(0)
+      expect(result[:count]).to eq(0)
+
+      expect(result[:price]).to eq(0)
+      expect(result[:clearance]).to eq(0)
+      expect(result[:count]).to eq(0)
+    end
 
       it "removes the number of discounted items from the original item's count" do
         expect(@avocado_result["AVOCADO"][:price]).to eq(3.00)
