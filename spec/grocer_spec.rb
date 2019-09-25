@@ -191,16 +191,18 @@ describe "Grocer" do
       end
 
       it "can increment coupon count if two are applied" do
-        avocado = find_item("AVOCADO")
-        coupon = find_coupon("AVOCADO")
-        consol_cart = consolidate_cart([avocado, avocado, avocado, avocado, avocado])
-        two_coupon_result = apply_coupons(consol_cart, [coupon, coupon])
+         avocado = find_item('AVOCADO')
+      cart = [avocado, avocado, find_item('KALE')]
 
-        expect(two_coupon_result["AVOCADO"][:count]).to eq(1)
-        expect(two_coupon_result["AVOCADO W/COUPON"][:price]).to eq(2.50)
-        expect(two_coupon_result["AVOCADO"][:price]).to eq(3.00)
-        expect(two_coupon_result["AVOCADO W/COUPON"][:count]).to eq(4)
-      end
+      result = consolidate_cart(cart)
+      expect(result[:price]).to eq(0)
+      expect(result[:clearance]).to eq(0)
+      expect(result[:count]).to eq(0)
+
+      expect(result[:price]).to eq(0)
+      expect(result[:clearance]).to eq(0)
+      expect(result[:count]).to eq(0)
+    
     end
   end
 
