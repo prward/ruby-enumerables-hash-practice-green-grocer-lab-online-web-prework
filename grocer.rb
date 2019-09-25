@@ -9,6 +9,7 @@ def consolidate_cart(cart)
     end
   end
   return organized_cart
+end
   
   
 end
