@@ -176,13 +176,18 @@ describe "Grocer" do
       end
 
       it "doesn't break if there is no coupon" do
-        cheese = items.find { |item| item['CHEESE'] }
-        cart = [cheese, cheese]
-        consolidated_cart = consolidate_cart(cart)
-        no_coupon_result = apply_coupons(consolidated_cart, [])
+         avocado = find_item('AVOCADO')
+      cart = [avocado, avocado, find_item('KALE')]
 
-        expect(no_coupon_result["CHEESE"][:price]).to eq(6.50)
-        expect(no_coupon_result["CHEESE"][:count]).to eq(2)
+      result = consolidate_cart(cart)
+      expect(result[:price]).to eq(0)
+      expect(result[:clearance]).to eq(0)
+      expect(result[:count]).to eq(0)
+
+      expect(result[:price]).to eq(0)
+      expect(result[:clearance]).to eq(0)
+      expect(result[:count]).to eq(0)
+    end
       end
 
       it "can increment coupon count if two are applied" do
